@@ -2,57 +2,57 @@ using System;
 
 class Program
 {
-    const int MAX = 100;
-
-    static int Sum(int[] arr, int n)
-    {
-        int result = 0;
-        for (int i = 0; i < n; i++)
-        {
-            result += arr[i];
-        }
-        return result;
-    }
-
     static void Main()
     {
-        int n;
-        Console.Write("Enter the number of elements (1-100): ");
-        if (!int.TryParse(Console.ReadLine(), out n) || n < 1 || n > MAX)
-        {
-            Console.WriteLine("Invalid input. Please provide a digit ranging from 1 to 100.");
-            Environment.Exit(1);
-        }
+        int health = 100;
+        int score = 0;
 
-        int[] arr = new int[n];
+        Console.WriteLine("Welcome to the Adventure Game!");
+        Console.WriteLine("You are in a dark forest.");
 
-        Console.WriteLine("Enter " + n + " integers:");
-        for (int i = 0; i < n; i++)
+        while (health > 0)
         {
-            if (!int.TryParse(Console.ReadLine(), out arr[i]))
+            Console.WriteLine("\nOptions:");
+            Console.WriteLine("1. Go deeper into the forest.");
+            Console.WriteLine("2. Rest by the campfire.");
+            Console.WriteLine("3. Quit the game.");
+
+            int choice;
+            Console.Write("Enter your choice: ");
+            if (int.TryParse(Console.ReadLine(), out choice))
             {
-                Console.WriteLine("Invalid input. Please enter valid integers.");
-                Environment.Exit(1);
+                if (choice == 1)
+                {
+                    Console.WriteLine("You go farther into the forest and discover a treasure chest!");
+                    score += 10;
+                }
+                else if (choice == 2)
+                {
+                    Console.WriteLine("You rest by the campfire and regain 20 health.");
+                    health += 20;
+                }
+                else if (choice == 3)
+                {
+                    Console.WriteLine($"Thanks for playing! Your score: {score}");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Try again.");
+                }
+            }
+                }
+
+                health -= 10;
+                if (health <= 0)
+                {
+                    Console.WriteLine($"Game over. Your score: {score}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
             }
         }
-
-        int total = Sum(arr, n);
-
-        Console.WriteLine("Sum of the numbers: " + total);
-
-        if (total > 100)
-        {
-            Console.WriteLine("The sum is greater than 100.");
-        }
-        else if (total < 100)
-        {
-            Console.WriteLine("The sum is less than 100.");
-        }
-        else
-        {
-            Console.WriteLine("The sum is equal to 100.");
-        }
-
-        // No need to free memory in C#, as it's managed by the runtime.
     }
 }
