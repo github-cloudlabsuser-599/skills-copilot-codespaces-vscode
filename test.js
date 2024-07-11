@@ -1,9 +1,7 @@
 // Simple Calculator in JavaScript
 
 // Function to add two numbers
-function add(a, b) {
-    return a + b;
-}
+c
 
 // Function to subtract two numbers
 function subtract(a, b) {
