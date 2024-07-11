@@ -33,7 +33,25 @@ class Program
                         break;
                     case 3:
                         Console.WriteLine($"Thanks for playing! Your score: {score}");
-                        return;
+                        if (choice == 1)
+                        {
+                            Console.WriteLine("You go farther into the forest and discover a treasure chest!");
+                            score += 10;
+                        }
+                        else if (choice == 2)
+                        {
+                            Console.WriteLine("You rest by the campfire and regain 20 health.");
+                            health += 20;
+                        }
+                        else if (choice == 3)
+                        {
+                            Console.WriteLine($"Thanks for playing! Your score: {score}");
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid choice. Try again.");
+                        }
                     default:
                         Console.WriteLine("Invalid choice. Try again.");
                         break;
